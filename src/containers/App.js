@@ -9,8 +9,9 @@ library.add(faPencilAlt, faCheckSquare);
 
 class App extends Component {
     state = {
+        ruInput: "",
         plOutput: "",
-        startTextAreaRowCount: 10
+        startTextAreaRowCount: 20
     };
 
     render () {
@@ -32,7 +33,7 @@ class App extends Component {
                                 rows={this.state.startTextAreaRowCount}
                                 onKeyUp={this.transformThat}
                             />
-                            <label htmlFor="russian-text">Russian goes here</label>
+                            <label htmlFor="russian-text">Cyrillic (Russian) goes here</label>
                         </div>
                     </div>
                     <div className="col">
@@ -47,10 +48,15 @@ class App extends Component {
                                 contentEditable={false}
                                 value={this.state.plOutput}
                             />
-                            <label htmlFor="polish-text">Polish comes out here</label>
+                            <label htmlFor="polish-text">latin (with PL characters) comes out here</label>
                         </div>
                     </div>
 
+                </div>
+                <div>
+                    <h3>And if Russian confuses you, the translation is <a href={this.buildGoogleTranslateUrl()} target="_blank" rel="noopener noreferrer">here</a>
+
+                    </h3>
                 </div>
 
             </div>
@@ -58,8 +64,9 @@ class App extends Component {
     }
 
     transformThat = (event) => {
-        let input = event.currentTarget.value;
-        let output = this.polishifyAllContent(input);
+        this.setState({ ruInput: event.currentTarget.value });
+
+        let output = this.polishifyAllContent(this.state.ruInput);
         this.setState({ plOutput: output })
     };
 
@@ -74,6 +81,11 @@ class App extends Component {
         });
 
         return result;
+    };
+
+    buildGoogleTranslateUrl = () => {
+        let notEncodedUrl = "https://translate.google.com/#view=home&op=translate&sl=ru&tl=en&text=" + this.state.ruInput;
+        return encodeURI(notEncodedUrl);
     };
 
     polishifyLetter = (letter) => {
