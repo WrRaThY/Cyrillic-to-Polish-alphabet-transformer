@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPencilAlt, faCheckSquare } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faCheckSquare, faLanguage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import "./App.scss";
 
 
 library.add(faPencilAlt, faCheckSquare);
@@ -10,55 +12,93 @@ library.add(faPencilAlt, faCheckSquare);
 class App extends Component {
     state = {
         ruInput: "",
-        plOutput: "",
-        startTextAreaRowCount: 20
+        plOutput: ""
     };
 
     render () {
         return (
-            <div className="container">
-                <div className="row justify-content-center">
-                    <h1>Enter russian on the left</h1>
-                    <h1>And see something actually readable on the right</h1>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <div className="md-form amber-textarea active-amber-textarea-2">
-                            <FontAwesomeIcon
-                                icon={faPencilAlt} color="orange"
-                            />
-                            <textarea
-                                id="russian-text"
-                                className="md-textarea form-control"
-                                rows={this.state.startTextAreaRowCount}
-                                onKeyUp={this.transformThat}
-                            />
-                            <label htmlFor="russian-text">Cyrillic (Russian) goes here</label>
-                        </div>
+            <div>
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <h1 className="transformerTitle">Russian to Polish pronunciation transformer</h1>
                     </div>
-                    <div className="col">
-                        <div className="md-form amber-textarea active-amber-textarea-2">
-                            <FontAwesomeIcon
-                                icon={faCheckSquare} color="green"
-                            />
-                            <textarea
-                                id="polish-text"
-                                className="md-textarea form-control"
-                                rows={this.state.startTextAreaRowCount}
-                                contentEditable={false}
-                                value={this.state.plOutput}
-                            />
-                            <label htmlFor="polish-text">latin (with PL characters) comes out here</label>
+                    {/*add space here*/}
+                    <div className="row">
+                        <div className="col">
+                            <div className="form-group shadow-textarea">
+                                <FontAwesomeIcon
+                                    icon={faPencilAlt} color="orange"
+                                    size={"3x"}
+                                /> <label className="taTitle" htmlFor="russian-text">Russian</label>
+                                <textarea
+                                    id="russian-text"
+                                    className="form-control z-depth-1"
+                                    onKeyUp={this.transformThat}
+                                    placeholder="Russian goes here"
+                                />
+
+                            </div>
                         </div>
+                        <div className="col">
+                            <div className="form-group shadow-textarea">
+                                <FontAwesomeIcon
+                                    icon={faCheckSquare} color="green"
+                                    size={"3x"}
+                                /> <label className="taTitle" htmlFor="polish-text">A'la Polish</label>
+                                <textarea
+                                    id="polish-text"
+                                    className="md-textarea form-control"
+                                    contentEditable={false}
+                                    value={this.state.plOutput}
+                                    readOnly={true}
+                                    placeholder="something actually readable will be here"
+                                />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div className="row justify-content-center">
+                        <h4 className="translation">And if Russian confuses you, google eagerly provides the
+                            <a href={this.buildGoogleTranslateUrl()} target="_blank" rel="noopener noreferrer">
+                                <button type="button" className="btn btn-blue">
+                                    translation <FontAwesomeIcon
+                                    size="2x"
+                                    color="white"
+                                    icon={faLanguage}
+                                />
+
+                                </button>
+                            </a>
+                        </h4>
                     </div>
 
-                </div>
-                <div>
-                    <h3>And if Russian confuses you, the translation is <a href={this.buildGoogleTranslateUrl()} target="_blank" rel="noopener noreferrer">here</a>
+                    <div className="imageDiv">
+                        <img src={process.env.PUBLIC_URL + '/bumblebee.png'} alt="bumblebeeeeeee" />
+                    </div>
 
-                    </h3>
-                </div>
 
+                </div>
+                <footer className="page-footer font-small blue pt-4">
+                    <div className="container-fluid text-center text-md-left">
+
+                        <div className="row">
+
+                            <div className="col-md-6 mt-md-0 mt-3">
+
+                                <h5 className="text-uppercase">Footer Content</h5>
+                                <p>Someone told me that I need to have a footer, so here it is</p>
+                                <p>I still have no idea what to write tho :)</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div className="footer-copyright text-center py-3">© 2019 Copyright:
+                        <a href="https://wrrathy.github.io" target="_blank" rel="noopener noreferrer"> Radosław Domański</a>
+                    </div>
+                </footer>
             </div>
         );
     }
