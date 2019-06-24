@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "068bf7701101bd988a7b154bbf15fbe8",
+    "revision": "9cef33e35e03e50dfcf92f096cdf98a5",
     "url": "/Cyrillic-to-Polish-alphabet-transformer/index.html"
   },
   {
-    "revision": "e26edc89d1c44eaac506",
-    "url": "/Cyrillic-to-Polish-alphabet-transformer/static/css/main.ea72aede.chunk.css"
+    "revision": "6195d77d1a0443a95586",
+    "url": "/Cyrillic-to-Polish-alphabet-transformer/static/css/main.63f870cd.chunk.css"
   },
   {
     "revision": "719c0bdc558e537ced39",
     "url": "/Cyrillic-to-Polish-alphabet-transformer/static/js/2.5450787d.chunk.js"
   },
   {
-    "revision": "e26edc89d1c44eaac506",
+    "revision": "6195d77d1a0443a95586",
     "url": "/Cyrillic-to-Polish-alphabet-transformer/static/js/main.0e7c055c.chunk.js"
   },
   {
