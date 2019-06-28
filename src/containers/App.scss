@@ -46,23 +46,7 @@ footer {
 
   img {
     position: absolute;
-    left: 50%;
+    right: 0;
     top: 35%;
-  }
-}
-
-@media (min-width: 992px) {
-  .imageDiv {
-    img {
-      left: 60%;
-    }
-  }
-}
-
-@media (min-width: 1200px) {
-  .imageDiv {
-    img {
-      left: 70%;
-    }
   }
 }
