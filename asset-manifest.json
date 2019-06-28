@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Cyrillic-to-Polish-alphabet-transformer/static/css/main.8698dfef.chunk.css",
+    "main.css": "/Cyrillic-to-Polish-alphabet-transformer/static/css/main.e06ef9cc.chunk.css",
     "main.js": "/Cyrillic-to-Polish-alphabet-transformer/static/js/main.0e7c055c.chunk.js",
     "main.js.map": "/Cyrillic-to-Polish-alphabet-transformer/static/js/main.0e7c055c.chunk.js.map",
     "runtime~main.js": "/Cyrillic-to-Polish-alphabet-transformer/static/js/runtime~main.a0a8469d.js",
@@ -8,8 +8,8 @@
     "static/js/2.5450787d.chunk.js": "/Cyrillic-to-Polish-alphabet-transformer/static/js/2.5450787d.chunk.js",
     "static/js/2.5450787d.chunk.js.map": "/Cyrillic-to-Polish-alphabet-transformer/static/js/2.5450787d.chunk.js.map",
     "index.html": "/Cyrillic-to-Polish-alphabet-transformer/index.html",
-    "precache-manifest.f0167f7ae7e774b03224afe667991b61.js": "/Cyrillic-to-Polish-alphabet-transformer/precache-manifest.f0167f7ae7e774b03224afe667991b61.js",
+    "precache-manifest.346bf58a1fe3d42258cc7e916e87b3b9.js": "/Cyrillic-to-Polish-alphabet-transformer/precache-manifest.346bf58a1fe3d42258cc7e916e87b3b9.js",
     "service-worker.js": "/Cyrillic-to-Polish-alphabet-transformer/service-worker.js",
-    "static/css/main.8698dfef.chunk.css.map": "/Cyrillic-to-Polish-alphabet-transformer/static/css/main.8698dfef.chunk.css.map"
+    "static/css/main.e06ef9cc.chunk.css.map": "/Cyrillic-to-Polish-alphabet-transformer/static/css/main.e06ef9cc.chunk.css.map"
   }
 }

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Cyrillic-to-Polish-alphabet-transformer/precache-manifest.f0167f7ae7e774b03224afe667991b61.js"
+  "/Cyrillic-to-Polish-alphabet-transformer/precache-manifest.346bf58a1fe3d42258cc7e916e87b3b9.js"
 );
 
 self.addEventListener('message', (event) => {
