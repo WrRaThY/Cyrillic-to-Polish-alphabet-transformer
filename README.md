@@ -26,6 +26,12 @@ You will also see any lint errors in the console.
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
+## Deploying
+To deploy run:
+### `npm run deploy`
+
+This will do everything for you and deploy it to github pages.
+
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## Credits

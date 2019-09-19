@@ -7,17 +7,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./App.scss";
 import TransliterationHelper from "../services/TransliterationHelper";
 
-
 library.add(faPencilAlt, faCheckSquare);
+
+const DONE_TYPING_INTERVAL = 500;
 
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            ruInput: "",
-            plOutput: ""
+            typingTimer: null,
+            ruInput: this.getRuInput(window.location.search),
+            plOutput: TransliterationHelper.transformString(this.getRuInput(window.location.search))
         };
+
+        window.onpopstate = this.onBackButtonClicked;
     }
 
     render() {
@@ -41,8 +45,9 @@ class App extends Component {
                                 <textarea
                                     id="russian-text"
                                     className="form-control z-depth-1"
-                                    onKeyUp={this.transformThat}
+                                    onKeyUp={this.handleRussianTyping}
                                     placeholder="Russian goes here"
+                                    defaultValue={this.state.ruInput}
                                 />
 
                             </div>
@@ -97,16 +102,47 @@ class App extends Component {
         );
     }
 
-    transformThat = (event) => {
-        this.setState({ ruInput: event.currentTarget.value });
+    onBackButtonClicked = event => {
+        if(event.state){
+            const ruInput = this.getRuInput(event.state);
+            this.transformThat(ruInput);
+            document.getElementById("russian-text").value = ruInput;
+        }
+    };
 
-        let output = TransliterationHelper.transformString(this.state.ruInput);
-        this.setState({ plOutput: output })
+    handleRussianTyping = event => {
+        let ruInput = event.currentTarget.value;
+
+        clearTimeout(this.state.typingTimer);
+        let typingTimer = setTimeout(() => this.transformThat(ruInput), DONE_TYPING_INTERVAL);
+
+        this.setState({ typingTimer})
+    };
+
+    transformThat = (ruInput) => {
+        let plOutput = TransliterationHelper.transformString(ruInput);
+        this.setRuInput(ruInput);
+        this.setState({ plOutput, ruInput });
     };
 
     buildGoogleTranslateUrl = () => {
         let notEncodedUrl = "https://translate.google.com/#view=home&op=translate&sl=ru&tl=en&text=" + this.state.ruInput;
         return encodeURI(notEncodedUrl);
+    };
+
+    getRuInput = data => {
+        const searchParams = new URLSearchParams(data);
+        return searchParams.get('ruInput') || '';
+    };
+
+    setRuInput = (newRuInput = "") => {
+        if (newRuInput === this.state.ruInput){
+            return;
+        }
+
+        const searchParams = new URLSearchParams();
+        searchParams.set("ruInput", newRuInput);
+        window.history.pushState(searchParams.toString(), "Search text update", "?" + searchParams.toString());
     };
 }
 
